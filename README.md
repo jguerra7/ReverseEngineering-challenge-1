@@ -27,4 +27,5 @@ If you want you can only practice the executable file which is under the directo
 5. Open command-prompt and try some password.
 ![](images/trySomePasswords.png)
 6. Open the executable file in IDA and analyse the binary.
+![](images/openInIDA.png)
 7. 
