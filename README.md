@@ -21,11 +21,11 @@ If you want you can only practice the executable file which is under the directo
 # Detailed solution
 1. Open the <code>.jpg</code> file in Hex-Editor.
 2. Search for <code>PK..</code>, magic-number for <code>.zip</code> files.
-![](images/findZipMagicNumber.png)
+<img src="images/findZipMagicNumber.png" width="600">
 3. Change the file extension to <code>.zip</code> and open the archive.
 4. Extract the challenge.exe file.
 5. Open command-prompt and try some password.
-![](images/trySomePasswords.png)
+<img src="images/trySomePasswords.png" width="600">
 6. Open the executable file in IDA and analyse the binary.
 <img src="images/openInIDA.png" width="400">
 <br>We can see some stack variables and nothing helping to understand the password.
@@ -47,12 +47,12 @@ If you want you can only practice the executable file which is under the directo
 <br> using the command: <code>break *0x0401A2B</code>
 14. Run the program with some password: <code>run admin123</code> and we will stop at the breakpoint.
 15. Examine <code>EIP</code> to make sure we reach the right location.
-<img src="images/gdbCheckEIP.png" width="400">
+<img src="images/gdbCheckEIP.png" width="600">
 16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>.
 <br> We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
-<img src="images/gdbCheckEBP.png" width="400">
+<img src="images/gdbCheckEBP.png" width="600">
 <br> We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8
 17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.
-<img src="images/gdbSetValue.png" width="400">
+<img src="images/gdbSetValue.png" width="600">
 18. Continue the program and get the flag!
-<img src="images/gdbGetTheFlag.png" width="400">
+<img src="images/gdbGetTheFlag.png" width="600">
