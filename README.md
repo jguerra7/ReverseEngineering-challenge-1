@@ -21,17 +21,17 @@ If you want you can only practice the executable file which is under the directo
 # Detailed solution
 1. Open the <code>.jpg</code> file in Hex-Editor.
 2. Search for <code>PK..</code>, magic-number for <code>.zip</code> files.
-<img src="images/findZipMagicNumber.png" width="600">
+<img src="images/findZipMagicNumber.png" width="400">
 3. Change the file extension to <code>.zip</code> and open the archive.
 4. Extract the challenge.exe file.
 5. Open command-prompt and try some password.
-<img src="images/trySomePasswords.png" width="600">
+<img src="images/trySomePasswords.png" width="400">
 6. Open the executable file in IDA and analyse the binary.
 <img src="images/openInIDA.png" width="400">
 <br>We can see some stack variables and nothing helping to understand the password.
 7. Continu analyzing the binary and find 4 <code>strcpy</code>.
 <img src="images/fourCompares.png" width="600">
-<img src="images/4ComparesResult.png" width="600">
+<img src="images/4ComparesResult.png" width="500">
 <br>After the compares each brach loads into <code>var_10</code> index value.
 8. Each value of <code>var_10</code> lead into other branch.
 <br>We need to decide in which branch to focus.
