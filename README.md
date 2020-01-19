@@ -27,10 +27,10 @@ If you want you can only practice the executable file which is under the directo
 5. Open command-prompt and try some password.
 ![](images/trySomePasswords.png)
 6. Open the executable file in IDA and analyse the binary.
-![](images/openInIDA.png)
+<img src="images/openInIDA.png" width="400">
 <br>We can see some stack variables and nothing helping to understand the password.
 7. Continu analyzing the binary and find 4 <code>strcpy</code>.
-<img src="images/fourCompares.png" width="200">
-![](images/4ComparesResult.png)
+<img src="images/fourCompares.png" width="600">
+<img src="images/4ComparesResult.png" width="600">
 <br>After the compares each brach loads into <code>var_10</code> index value.
 8. 
