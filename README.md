@@ -19,36 +19,36 @@ If you want you can only practice the executable file which is under the directo
 4. Have fun!
 
 # Detailed solution
-<br>1. Open the <code>.jpg</code> file in Hex-Editor.
-<br>2. Search for <code>PK..</code>, magic-number for <code>.zip</code> files.
+1. Open the <code>.jpg</code> file in Hex-Editor.
+2. Search for <code>PK..</code>, magic-number for <code>.zip</code> files.
 <img src="images/findZipMagicNumber.png" width="400">
-<br>3. Change the file extension to <code>.zip</code> and open the archive.
-<br>4. Extract the challenge.exe file.
-<br>5. Open command-prompt and try some password.
+3. Change the file extension to <code>.zip</code> and open the archive.
+4. Extract the challenge.exe file.
+5. Open command-prompt and try some password.
 <img src="images/trySomePasswords.png" width="400">
-<br>6. Open the executable file in IDA and analyse the binary.
+6. Open the executable file in IDA and analyse the binary.
 <img src="images/openInIDA.png" width="400">
 <br>We can see some stack variables and nothing helping to understand the password.
-<br>7. Continu analyzing the binary and find 4 <code>strcpy</code>.
+7. Continu analyzing the binary and find 4 <code>strcpy</code>.
 <img src="images/fourCompares.png" width="600">
 <img src="images/4ComparesResult.png" width="500">
 <br>After the compares each brach loads into <code>var_10</code> index value.
-<br>8. Each value of <code>var_10</code> lead into other branch. We need to decide in which branch to focus.
+8. Each value of <code>var_10</code> lead into other branch. We need to decide in which branch to focus.
 <img src="images/var10Compares.png" width="600">
-<br>9. We continue with the binary analysis and realize where to look closely.
+9. We continue with the binary analysis and realize where to look closely.
 <img src="images/branch1.png" width="600">
 <br> When <code>var_10</code> is equals 1 the program prints "Nice!".
-<br>10. We now knows to focous on this flow -> to jump the program to this location. In order to do this we will use debugger: GDB.
-<br>11. We load the executable with GDB: <code>gdb32.exe challenge.exe</code>
-<br>12. Change the assembly language to Intel syntax: <code>set disassembly-flavor intel</code>
-<br>13. Put break-point befor <code>var_10</code> is loaded into <code>EAX</code> register, as we saw from IDA, using the command: <code>break *0x0401A2B</code>
-<br>14. Run the program with some password: <code>run admin123</code> and we will stop at the breakpoint.
-<br>15. Examine <code>EIP</code> to make sure we reach the right location.
+10. We now knows to focous on this flow -> to jump the program to this location. In order to do this we will use debugger: GDB.
+11. We load the executable with GDB: <code>gdb32.exe challenge.exe</code>
+12. Change the assembly language to Intel syntax: <code>set disassembly-flavor intel</code>
+13. Put break-point befor <code>var_10</code> is loaded into <code>EAX</code> register, as we saw from IDA, using the command: <code>break *0x0401A2B</code>
+14. Run the program with some password: <code>run admin123</code> and we will stop at the breakpoint.
+15. Examine <code>EIP</code> to make sure we reach the right location.
 <img src="images/gdbCheckEIP.png" width="600">
-<br>16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>. We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
+16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>. We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
 <img src="images/gdbCheckEBP.png" width="600">
 <br> We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8
-<br>17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.
+17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.
 <img src="images/gdbSetValue.png" width="600">
-<br>18. Continue the program and get the flag!
+18. Continue the program and get the flag!
 <img src="images/gdbGetTheFlag.png" width="600">
