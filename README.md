@@ -17,3 +17,13 @@ If you want you can only practice the executable file which is under the directo
 3. Type: <code>gcc -o challenge.exe challenge.c</code>
 4. Type: <code>copy /b challenge.exe + Reverse-Memes.jpg Challenge.jpg</code>
 4. Have fun!
+
+# Detailed solution
+1. Open the <code>.jpg</code> file in Hex-Editor.
+2. Search for <code>PK..</code>, magic-number for <code>.zip</code> files.
+![](images/findZipMagicNumber.png)
+3. Change the file extension to <code>.zip</code> and open the archive.
+4. Extract the challenge.exe file.
+5. Open command-prompt and try some password.
+6. Open the executable file in IDA and analyse the binary.
+7. 
