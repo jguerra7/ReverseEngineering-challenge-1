@@ -1,5 +1,6 @@
-# CTFs
-Cyber capture the flag challenges.
+# Reverse engineering - challenge 1
+Reverse engineering capture the flag challenge.
+You need to find the flag: {artist name - song name}.
 
 # setup_file
 * challenge.c - The challenge program itself.
