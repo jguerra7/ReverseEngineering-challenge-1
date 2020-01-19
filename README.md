@@ -25,5 +25,6 @@ If you want you can only practice the executable file which is under the directo
 3. Change the file extension to <code>.zip</code> and open the archive.
 4. Extract the challenge.exe file.
 5. Open command-prompt and try some password.
+![](images/trySomePasswords.png)
 6. Open the executable file in IDA and analyse the binary.
 7. 
