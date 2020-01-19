@@ -30,7 +30,7 @@ If you want you can only practice the executable file which is under the directo
 ![](images/openInIDA.png)
 <br>We can see some stack variables and nothing helping to understand the password.
 7. Continu analyzing the binary and find 4 <code>strcpy</code>.
-![](images/fourCompares.png)
+<img src="images/fourCompares.png" width="200">
 ![](images/4ComparesResult.png)
 <br>After the compares each brach loads into <code>var_10</code> index value.
 8. 
