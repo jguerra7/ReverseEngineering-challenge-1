@@ -1,3 +1,8 @@
+################################################################################
+# Author: Aviv Shabtay
+# This program is the challenge itself.
+################################################################################
+
 #include <stdio.h>
 #include <windows.h>
 #include <Wincrypt.h>
@@ -79,7 +84,7 @@ DWORD main(int argc, CHAR* argv[])
 
 	// Get the actual hash value:
 	if (CryptGetHashParam(hHash, HP_HASHVAL, rgbHash, &cbHash, 0)) {
-		printf("[+] MD5 hash of file %s is: ", password);
+		printf("[+] MD5 hash of given password %s is: ", password);
 		for (DWORD i = 0; i < cbHash; i++) {
 			//sprintf("%c%c", rgbDigits[rgbHash[i] >> 4], rgbDigits[rgbHash[i] & 0xf]);
 			int j = i * 2;
@@ -96,7 +101,6 @@ DWORD main(int argc, CHAR* argv[])
 	}
 
 	// Check if the user-hashed-password match any saved hashes:
-
 	if (strcmp(hashedPassword, hash1) == 0) {
 		matchNumber = 1;
 	}
