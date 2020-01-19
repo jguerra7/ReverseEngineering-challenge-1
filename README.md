@@ -33,23 +33,19 @@ If you want you can only practice the executable file which is under the directo
 <img src="images/fourCompares.png" width="600">
 <img src="images/4ComparesResult.png" width="500">
 <br>After the compares each brach loads into <code>var_10</code> index value.
-8. Each value of <code>var_10</code> lead into other branch.
-<br>We need to decide in which branch to focus.
+8. Each value of <code>var_10</code> lead into other branch. We need to decide in which branch to focus.
 <img src="images/var10Compares.png" width="600">
 9. We continue with the binary analysis and realize where to look closely.
 <img src="images/branch1.png" width="600">
 <br> When <code>var_10</code> is equals 1 the program prints "Nice!".
-10. We now knows to focous on this flow -> to jump the program to this location.
-<br> In order to do this we will use debugger: GDB.
+10. We now knows to focous on this flow -> to jump the program to this location. In order to do this we will use debugger: GDB.
 11. We load the executable with GDB: <code>gdb32.exe challenge.exe</code>
 12. Change the assembly language to Intel syntax: <code>set disassembly-flavor intel</code>
-13. Put break-point befor <code>var_10</code> is loaded into <code>EAX</code> register, as we saw from IDA,
-<br> using the command: <code>break *0x0401A2B</code>
+13. Put break-point befor <code>var_10</code> is loaded into <code>EAX</code> register, as we saw from IDA, using the command: <code>break *0x0401A2B</code>
 14. Run the program with some password: <code>run admin123</code> and we will stop at the breakpoint.
 15. Examine <code>EIP</code> to make sure we reach the right location.
 <img src="images/gdbCheckEIP.png" width="600">
-16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>.
-<br> We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
+16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>. We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
 <img src="images/gdbCheckEBP.png" width="600">
 <br> We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8
 17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.
