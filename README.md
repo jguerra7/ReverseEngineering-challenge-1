@@ -41,3 +41,18 @@ If you want you can only practice the executable file which is under the directo
 <br> When <code>var_10</code> is equals 1 the program prints "Nice!".
 10. We now knows to focous on this flow -> to jump the program to this location.
 <br> In order to do this we will use debugger: GDB.
+11. We load the executable with GDB: <code>gdb32.exe challenge.exe</code>
+12. Change the assembly language to Intel syntax: <code>set disassembly-flavor intel</code>
+13. Put break-point befor <code>var_10</code> is loaded into <code>EAX</code> register, as we saw from IDA,
+<br> using the command: <code>break *0x0401A2B</code>
+14. Run the program with some password: <code>run admin123</code> and we will stop at the breakpoint.
+15. Examine <code>EIP</code> to make sure we reach the right location.
+<img src="images/gdbCheckEIP.png" width="400">
+16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>.
+<br> We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".
+<img src="images/gdbCheckEBP.png" width="400">
+<br> We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8
+17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.
+<img src="images/gdbSetValue.png" width="400">
+18. Continue the program and get the flag!
+<img src="images/gdbGetTheFlag.png" width="400">
