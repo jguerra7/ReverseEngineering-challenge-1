@@ -38,6 +38,6 @@ If you want you can only practice the executable file which is under the directo
 <img src="images/var10Compares.png" width="600">
 9. We continue with the binary analysis and realize where to look closely.
 <img src="images/branch1.png" width="600">
-<br> When <code>var_10>/code> is equals 1 the program prints "Nice!".
+<br> When <code>var_10</code> is equals 1 the program prints "Nice!".
 10. We now knows to focous on this flow -> to jump the program to this location.
 <br> In order to do this we will use debugger: GDB.
