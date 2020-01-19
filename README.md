@@ -1,8 +1,7 @@
 # Reverse engineering - challenge 1
-Reverse engineering capture the flag challenge.
-You need to find the flag: {artist name - song name}.
-The complete challenge file which is under: the_challenge directory.
-If you want you can practice just the executable file which is under: setup_files directory.
+You need to find the flag in the form of: {artist name - song name}.
+The complete challenge file is under the directory: the_challenge.
+If you want you can only practice the executable file which is under the directory: setup_files.
 
 # setup_file
 * challenge.c - The challenge program itself.
