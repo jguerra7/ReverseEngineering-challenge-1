@@ -28,9 +28,9 @@ If you want you can only practice the executable file which is under the directo
 ![](images/trySomePasswords.png)
 6. Open the executable file in IDA and analyse the binary.
 ![](images/openInIDA.png)
-** We can see some stack variables and nothing helping to understand the password.
+<br>We can see some stack variables and nothing helping to understand the password.
 7. Continu analyzing the binary and find 4 <code>strcpy</code>.
 ![](images/fourCompares.png)
 ![](images/4ComparesResult.png)
-** After the compares each brach loads into <code>var_10</code> index value.
+<br>After the compares each brach loads into <code>var_10</code> index value.
 8. 
