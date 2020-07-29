@@ -33,16 +33,16 @@ If you want you can only practice the executable file which is under the directo
 <img src="images/trySomePasswords.png" width="400">
 6. Open the executable file in IDA and analyse the binary.<br>
 <img src="images/openInIDA.png" width="400">
-<br>We can see some stack variables and nothing helping to understand the password.<br>
+We can see some stack variables and nothing helping to understand the password.<br>
 7. Continue analyzing the binary and find 4 <code>strcpy</code>.<br>
 <img src="images/fourCompares.png" width="600"><br>
 <img src="images/4ComparesResult.png" width="500">
-<br>After the compares each brach loads into <code>var_10</code> index value.<br>
+After the compares each brach loads into <code>var_10</code> index value.<br>
 8. Each value of <code>var_10</code> lead into other branch. We need to decide in which branch to focus.<br>
 <img src="images/var10Compares.png" width="600">
 9. We continue with the binary analysis and realize where to look closely.<br>
 <img src="images/branch1.png" width="600">
-<br> When <code>var_10</code> is equals 1 the program prints "Nice!".<br>
+When <code>var_10</code> is equals 1 the program prints "Nice!".<br>
 10. We now knows to focous on this flow -> to jump the program to this location. In order to do this we will use debugger: GDB.<br>
 11. We load the executable with GDB: <code>gdb32.exe challenge.exe</code><br>
 12. Change the assembly language to Intel syntax: <code>set disassembly-flavor intel</code><br>
@@ -52,7 +52,7 @@ If you want you can only practice the executable file which is under the directo
 <img src="images/gdbCheckEIP.png" width="600">
 16. Examine <code>EBP-0x10</code> to see the current value, which is: <code>-1</code>. We want to change this value to <code>1</code> to get the location where the program prints: "Nice!".<br>
 <img src="images/gdbCheckEBP.png" width="600">
-<br> We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8<br>
+We also realize the location of <code>EBP-0x10</code> in memory which is: 0x60FEF8<br>
 17. Set the value on the stack to 1 using the command: <code>set {int}0x60FEF8 = 1</code>.<br>
 <img src="images/gdbSetValue.png" width="600">
 18. Continue the program and get the flag!<br>
